@@ -1,0 +1,95 @@
+
+import os
+from google import genai
+
+# Get Gemini API key securely
+api_key = os.getenv("GEMINI_API_KEY")
+
+if not api_key:
+    print("Error: Please set your GEMINI_API_KEY.")
+    exit()
+
+# Connect to Gemini AI
+client = genai.Client(api_key=api_key)
+
+
+def study_assistant():
+
+    print("\n================================")
+    print("       AI STUDY ASSISTANT")
+    print("================================")
+
+    while True:
+
+        print("\nChoose an option:")
+        print("1. Explain a Topic")
+        print("2. Summarise Text")
+        print("3. Generate Practice Questions")
+        print("4. Get Study Tips")
+        print("5. Exit")
+
+        choice = input("\nEnter your choice (1-5): ")
+
+        if choice == "1":
+
+            topic = input("Enter a topic: ")
+            prompt = (
+                f"Explain {topic} in simple language "
+                "with a suitable example."
+            )
+
+        elif choice == "2":
+
+            text = input("Enter text to summarise: ")
+            prompt = (
+                "Summarise the following text in simple "
+                f"language using bullet points:\n{text}"
+            )
+
+        elif choice == "3":
+
+            topic = input("Enter a topic: ")
+            prompt = (
+                f"Generate 5 practice questions about {topic} "
+                "with their answers."
+            )
+
+        elif choice == "4":
+
+            subject = input("Enter a subject: ")
+            prompt = (
+                f"Give 5 useful study tips for {subject}."
+            )
+
+        elif choice == "5":
+
+            print("\nThank you for using AI Study Assistant!")
+            print("Keep learning and keep growing!")
+            break
+
+        else:
+
+            print("\nInvalid choice. Please enter a number from 1 to 5.")
+            continue
+
+        try:
+
+            print("\nGenerating response...")
+
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt
+            )
+
+            print("\n========== AI RESPONSE ==========")
+            print(response.text)
+            print("=================================")
+
+        except Exception as error:
+
+            print("\nSomething went wrong.")
+            print("Error:", error)
+
+
+if __name__ == "__main__":
+    study_assistant()
