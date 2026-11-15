@@ -1,0 +1,36 @@
+
+# AI Study Assistant
+
+## Project Overview
+AI Study Assistant is a beginner-friendly Python project powered by Google Gemini AI. It helps students learn topics and prepare for exams.
+
+## Features
+1. Explain a Topic
+2. Summarise Text
+3. Generate Practice Questions
+4. Get Study Tips
+
+## Technologies Used
+- Python
+- Google Gemini AI
+- Google Gen AI SDK
+
+## Installation
+
+Install the required library:
+
+pip install google-genai
+
+## API Key Setup
+Set your Gemini API key as an environment variable named GEMINI_API_KEY.
+
+Do not upload your API key to GitHub.
+
+## How to Run
+
+Run the following command:
+
+python AI_Study_Assistant.py
+
+## Project Objective
+To explore how Artificial Intelligence can support students in their learning process.
